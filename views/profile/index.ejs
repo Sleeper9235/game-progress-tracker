@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Profile Page</title>
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to Gamoury!</h1>
-  <div id="login-portal">
-    <div id="sign-up-button">
-    <form action="/auth/sign-up" method=""> 
-      <button type="submit">Sign Up</button>
+    <h1>Welcome to your profile!</h1>
+    <form action="/profile" method="POST">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" />
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName"/>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+        <label for="games">Games</label>
+        <select type="text" name="games" id="games"/>
+
+        <button type="submit">Add Game</button>
     </form>
-    </div>
-    <div id="sign-in-button">
-    <form action="/auth/sign-in" method="">
-      <button type="submit">Sign In</button>
-    </form>
-  </div>
-  </div>
 </body>
 </html>

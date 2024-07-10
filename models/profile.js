@@ -1,13 +1,20 @@
 const mongoose = require('mongoose')
+const { format } = require('morgan')
 
 const profileSchema = new mongoose.Schema({
-    name: {
-        type: String, 
-        required: true,
-    },
-    region: {
+    firstName: {
         type: String,
+        required: true, 
     },
+
+    lastName: {
+        type: String,
+        required: true,
+    }, 
+    email: {
+        type: String,
+        required: true,
+    }, 
     games: [
         {
             type: mongoose.Schema.Types.ObjectId,

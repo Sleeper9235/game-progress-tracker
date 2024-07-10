@@ -9,7 +9,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-});
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Profile",
+  },
+})
 
 const User = mongoose.model('User', userSchema);
 
