@@ -10,10 +10,9 @@ const session = require('express-session');
 const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
 
-const authController = require('./controllers/auth.js')
-const gamesController = require('./models/games.js')
-const profileController = require('./models/profile.js')
-
+const authController = require('./controllers/auth.js');
+const gamesController = require('./controllers/games.js');
+const profileController = require('./controllers/profile.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -44,7 +43,6 @@ app.use(passUserToView);
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/games', gamesController);
-app.use('/profile', profileController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

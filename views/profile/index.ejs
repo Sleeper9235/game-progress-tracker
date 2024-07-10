@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+    <h1>Welcome to Gamoury!</h1>
+  <div id="login-portal">
+    <div id="sign-up-button">
+    <form action="/auth/sign-up" method=""> 
+      <button type="submit">Sign Up</button>
+    </form>
+    </div>
+    <div id="sign-in-button">
+    <form action="/auth/sign-in" method="">
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game List</title>
+</head>
+<body>
+    <%- include('../../partials/_navbar') %>
+    <h1>Our List of Games</h1>
+    <ul>
+        <% games.forEach((game) => { %>
+            <li value="game.id"><a><%= game.title %></a></li>
+        <% }) %>
+    </ul>
+    <h3>Add a game to the list</h3>
+    <form action="/games" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre"/>
+        <label for="image">Image (hyperlink)</label>
+        <input type="text" name="image" id="image" value="https://img.freepik.com/premium-vector/black-white-image-placeholder-classic-style-pictogram_764382-13674.jpg?w=740"/>
+        <label for="releasedDate">Release date</label>
+        <input type="text" name="releasedDate" id="releasedDate"/>
+        <label for="description">Description</label>
+        <textarea type="text" name="description" id="description"></textarea>
+        <label for="gameLink">Link</label>
+        <input type="text" name="gameLink" id="gameLink"/>
+        <button type="submit">Add Game</button>
+    </form>
+</body>
+</html>

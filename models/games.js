@@ -20,7 +20,7 @@ const gameSchema = new mongoose.Schema({
     description: {
         type: String,
     }, 
-    hyperlink: {
+    gameLink: {
         type: String, 
     }
 })
