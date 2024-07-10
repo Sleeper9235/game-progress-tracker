@@ -15,6 +15,9 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true,
     }, 
+    profileCreated: {
+        type: Boolean
+    },
     games: [
         {
             type: mongoose.Schema.Types.ObjectId,

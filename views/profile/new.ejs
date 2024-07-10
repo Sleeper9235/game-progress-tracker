@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+</head>
+<body>
+  <%- include('../../partials/_navbar.ejs') %>
+    <h1>Welcome to your profile!</h1>
+    <form action="/profile/new" method="POST">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" />
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName"/>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+        <div id="games">
+            <h3>Selected Game</h3>
+        <select name="games" id="gameSelect" multiple>
+        <% games.forEach((game) => { %> 
+            <option name="games" value="<%= game.id %>"><%= game.title %></option>
+        <% }) %>
+        </select>
+        </div>
+        <button type="submit">Finish</button>
+    </form>
+</body>
+</html>
