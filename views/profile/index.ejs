@@ -7,7 +7,32 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1>Welcome to your profile!</h1>
-    
+    <h1><%= user.username %>, welcome to your profile!</h1>
+    <div class="game-library">
+        <ul>
+            <% games.forEach((game) => { %>
+                <li>
+                    <br />
+                    <img src="<%= game.image %>"  width="300px"/>
+                    <br />
+                    <%= game.title %>
+                    <br />
+                    <%= game.genre %>
+                    <br />
+                    <%= game.releasedDate %>
+                    <br />
+                    <%= game.description %>
+                    <br />
+                    <a value="<%= game.gameLink %>"></a>
+                    <br />
+                    <form action="/profile/checkbox" method="POST">
+                        <input type="checkbox" value="<%= game._id %>" name="gameCompleted" >Game Completed</input>
+                        <button type="submit">Update</button>
+                    </form>                    
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
 </body>
 </html>
