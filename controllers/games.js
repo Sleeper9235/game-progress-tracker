@@ -25,4 +25,17 @@ router.post('/', async(req, res) => {
     }
 })
 
+router.get('/armoury', async (req, res) => {
+    try {
+        const games = await Game.find({})
+        res.render('games/armoury.ejs', {
+            games: games,
+        })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+
 module.exports = router;

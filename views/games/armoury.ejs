@@ -7,26 +7,38 @@
 </head>
 <body>
     <%- include('../../partials/_navbar') %>
-    <h1>Our List of Games</h1>
-    <ul>
+    <h1>Welcome to the Armoury</h1>
+
+    <h4>Current games held:</h4>
+    <div id="gameScrollBox" >
+    
         <% games.forEach((game) => { %>
-            <li value="game.id"><%= game.title %></li>
+            <a>
+                <img width="100px" src="<%= game.image %>" alt="<%= game.title %>" title="<%= game.title %>"/>
+            </a>
         <% }) %>
-    </ul>
+
+    </div>
     <h3>Add a game to the list</h3>
     <form action="/games" method="POST">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" />
+        <br />
         <label for="genre">Genre</label>
         <input type="text" name="genre" id="genre"/>
+        <br />
         <label for="image">Image (hyperlink)</label>
         <input type="text" name="image" id="image" value="https://img.freepik.com/premium-vector/black-white-image-placeholder-classic-style-pictogram_764382-13674.jpg?w=740"/>
+        <br />
         <label for="releasedDate">Release date</label>
         <input type="text" name="releasedDate" id="releasedDate"/>
+        <br />
         <label for="description">Description</label>
         <textarea type="text" name="description" id="description"></textarea>
+        <br />
         <label for="gameLink">Link</label>
         <input type="text" name="gameLink" id="gameLink"/>
+        <br />
         <button type="submit">Add Game</button>
     </form>
 </body>
