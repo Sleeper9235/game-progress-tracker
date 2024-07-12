@@ -32,17 +32,16 @@
                     <%= game.description %>
                     <br />
                     <a value="<%= game.gameLink %>"></a>
-                    <br />
                     <% if (game.completedByUsers.includes(user._id)) { %>
-                        <form action="/profile/checkbox?_method=DELETE" method="POST">
-                            <input type="checkbox" value="<%= game._id %>" name="gameCompleted" checked>Game Completed</input>
-                            <button type="submit">Update</button>
+                        Game Status: complete
+                        <form action="/profiles/checkbox?_method=DELETE" method="POST">
+                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as incomplete</button>
                         </form> 
                     <% } else { %>
-                    <form action="/profile/checkbox" method="POST">
-                        <input type="checkbox" value="<%= game._id %>" name="gameCompleted" >Game Completed</input>
-                        <button type="submit">Update</button>
-                    </form> 
+                        Game Status: incomplete
+                        <form action="/profiles/checkbox" method="POST">
+                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as complete</button>
+                        </form> 
                     <% } %>                   
                 </li>
             <% }) %>

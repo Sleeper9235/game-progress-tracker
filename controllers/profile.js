@@ -5,15 +5,31 @@ const Profile = require('../models/profile.js')
 const Games = require('../models/games.js')
 const User = require('../models/user.js')
 
-
 router.get('/', async (req, res) => {
     try {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
+        const allUsers = await User.find({})
+        console.log(allUsers)
+        res.render('profiles/index.ejs', {
+            user: userInDatabase,
+            allUsers: allUsers,
+            }
+        )
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+
+router.get('/myProfile', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
         if (!userInDatabase.profile) {
-            res.redirect('/profile/new')
+            res.redirect('/profiles/new')
         } else {
             const myGames = await Games.find({ _id: userInDatabase.profile.games })
-            res.render('profile/index.ejs', {
+            res.render('profiles/user-profile.ejs', {
                 user: userInDatabase,
                 games: myGames,
             })
@@ -24,10 +40,27 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:profileId', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
+        const currentProfile = await User.findOne({ _id: req.params.profileId}).populate('profile')
+        const currentGames = await Games.find({ _id: currentProfile.profile.games })
+        res.render('profiles/show.ejs', {
+            user: userInDatabase,
+            profile: currentProfile, 
+            games: currentGames
+        })
+    } catch (err) {
+        console.log(err) 
+        res.redirect('/')
+    }
+})
+
+
 router.get('/new', async (req, res) => {
     try {
         const games = await Games.find({})
-        res.render('profile/new.ejs', {
+        res.render('profiles/new.ejs', {
             games: games,
         })
     } catch (err) {
@@ -46,7 +79,7 @@ router.post('/new', async(req, res) => {
             {profile: myProfile._id}, 
         )
         
-        res.redirect('/profile')
+        res.redirect('/profiles/myProfile')
     } catch (err) {
         console.log(err)
         res.redirect('/')
@@ -59,7 +92,7 @@ router.post('/checkbox', async (req, res) => {
             $push: { completedByUsers: req.session.user._id },
         });
 
-        res.redirect('/profile')
+        res.redirect('/profiles/myProfile')
     } catch (err) {
         console.log(err)
         res.redirect('/')
@@ -68,12 +101,11 @@ router.post('/checkbox', async (req, res) => {
 
 router.delete('/checkbox', async (req, res) => {
     try {
-        console.log(req.body)
         await Games.findByIdAndUpdate(req.body.gameCompleted, { 
             $pull: { completedByUsers: req.session.user._id },
         });
 
-        res.redirect('/profile')
+        res.redirect('/profiles/myProfile')
     } catch (err) { 
         console.log(err) 
         res.redirect('/')

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+</head>
+<body>
+  <%- include('../../partials/_navbar.ejs') %>
+    <h1><%= user.profile.firstName %>, welcome to <%=profile.username %>'s page!</h1>
+        <div class="game-library">
+            <ul>
+                <% games.forEach((game) => { %>
+                    <li>
+                        <br />
+                        <img src="<%= game.image %>"  width="300px"/>
+                        <br />
+                        <%= game.title %>
+                        <br />
+                        <%= game.genre %>
+                        <br />
+                        <%= game.releasedDate %>
+                        <br />
+                        <%= game.description %>
+                        <br />
+                        <a value="<%= game.gameLink %>"></a>
+                        <% if (game.completedByUsers.includes(profile._id)) { %>
+                            Game Status: complete
+                        <% } else { %>
+                            Game Status: incomplete
+                        <% } %>                   
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+
+</body>
+</html>

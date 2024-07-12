@@ -70,7 +70,7 @@ router.post('/sign-in', async (req, res) => {
       _id: userInDatabase._id
     };
   
-    res.redirect('/profile');
+    res.redirect('/profiles/myProfile');
   } catch (error) {
     console.log(error);
     res.redirect('/');
