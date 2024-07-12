@@ -8,44 +8,19 @@
 <body>
   <%- include('../../partials/_navbar.ejs') %>
     <h1><%= user.profile.firstName %>, welcome to your game armoury!</h1>
-    <div class="gameSearch">
-        <form action="" method="get">
-            <p>Find a game: 
-                <input type="search" /> 
-                <button type="submit">Search</button>
-            </p>
-        </form>
-    </div>
-    <div class="game-library">
-        <ul>
+        <div class="game-library">
             <% games.forEach((game) => { %>
-                <li>
-                    <br />
-                    <img src="<%= game.image %>"  width="300px"/>
-                    <br />
-                    <%= game.title %>
-                    <br />
-                    <%= game.genre %>
-                    <br />
-                    <%= game.releasedDate %>
-                    <br />
-                    <%= game.description %>
-                    <br />
-                    <a value="<%= game.gameLink %>"></a>
-                    <% if (game.completedByUsers.includes(user._id)) { %>
-                        Game Status: complete
-                        <form action="/profiles/checkbox?_method=DELETE" method="POST">
-                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as incomplete</button>
-                        </form> 
-                    <% } else { %>
-                        Game Status: incomplete
-                        <form action="/profiles/checkbox" method="POST">
-                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as complete</button>
-                        </form> 
-                    <% } %>                   
-                </li>
+                <div class="each-game">
+                    <a href="/profiles/<%= game._id %>/edit">
+                        <img 
+                        src="<%= game.image %>"  
+                        alt="<%= game.title %>" 
+                        title="<%= game.title %>" 
+                        width="100px"
+                        />
+                    </a>
+                </div>            
             <% }) %>
-        </ul>
     </div>
 
 </body>

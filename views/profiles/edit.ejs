@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+</head>
+<body>
+    <%- include('../../partials/_navbar.ejs') %>
+    <div class="game-library">
+        <ul>
+            <% game.forEach((game) => { %>
+                <div>
+                    <h1>Welcome to your inventory slot for <%= game.title %></h1>
+                    <br />
+                    <img src="<%= game.image %>"  width="300px"/>
+                    <br />
+                    <%= game.title %>
+                    <br />
+                    <%= game.genre %>
+                    <br />
+                    <%= game.releasedDate %>
+                    <br />
+                    <%= game.description %>
+                    <br />
+                    <a value="<%= game.gameLink %>"></a>
+                    <% if (game.completedByUsers === (user._id)) { %>
+                        Game Status: complete
+                        <form action="/profiles/checkbox?_method=DELETE" method="POST">
+                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as incomplete</button>
+                        </form> 
+                    <% } else { %>
+                        Game Status: incomplete
+                        <form action="/profiles/checkbox" method="POST">
+                            <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as complete</button>
+                        </form> 
+                    <% } %>                   
+                </div>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
