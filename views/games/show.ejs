@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+</head>
+<body>
+  <%- include('../../partials/_navbar.ejs') %>
+    <h1></h1>
+        <div class="game-library">
+            <% games.forEach((game) => { %>
+              <ul>
+                <img src="<%= game.image %>"  width="300px"/>
+                  <li> 
+                    <%= game.title %>
+                  </li>
+                  <li> 
+                    <%= game.genre %>
+                  </li>
+                  <li> 
+                    <%= game.releasedDate %>
+                  </li>
+                  <li> 
+                    <%= game.description %>
+                  </li>
+                  <li>     
+                    <a href="<%= game.gameLink %>">Website</a>                 
+                  </li>
+              </ul>
+            <% }) %>
+        </div>
+
+</body>
+</html>

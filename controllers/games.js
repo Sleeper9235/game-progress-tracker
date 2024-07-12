@@ -37,5 +37,19 @@ router.get('/armoury', async (req, res) => {
     }
 })
 
+router.get('/armoury/:gameId', async (req, res) => {
+    try {
+        console.log(req.params.gameId)
+        const currentGame = await Game.find({_id: req.params.gameId})
+        console.log(currentGame)
+        res.render('games/show.ejs', {
+            games: currentGame,
+        })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
 
 module.exports = router;

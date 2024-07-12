@@ -13,7 +13,7 @@
     <div id="gameScrollBox" >
     
         <% games.forEach((game) => { %>
-            <a>
+            <a href="armoury/<%= game._id %>">
                 <img width="100px" src="<%= game.image %>" alt="<%= game.title %>" title="<%= game.title %>"/>
             </a>
         <% }) %>
