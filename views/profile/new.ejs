@@ -14,12 +14,12 @@
         <label for="lastName">Last Name</label>
         <input type="text" name="lastName" id="lastName"/>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" />
+        <input type="email" name="email" id="email" />
         <div id="games">
             <h3>Selected Game</h3>
-        <select name="games" id="gameSelect" multiple>
+        <select name="completedGames" id="gameSelect" multiple>
         <% games.forEach((game) => { %> 
-            <option name="games" value="<%= game.id %>"><%= game.title %></option>
+            <option name="completedGames" value="<%= game.id %>" ><%= game.title %></option>
         <% }) %>
         </select>
         </div>

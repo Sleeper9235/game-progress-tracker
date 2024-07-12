@@ -6,7 +6,6 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true, 
     },
-
     lastName: {
         type: String,
         required: true,
@@ -18,13 +17,13 @@ const profileSchema = new mongoose.Schema({
     profileCreated: {
         type: Boolean
     },
-    games: [
+    completedGames: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Game",
-            gameIsCompleted: Boolean,
+            ref: "completedGame"
         }
-    ], 
+
+    ]
 })
 
 const Profile = mongoose.model('Profile', profileSchema)

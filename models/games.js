@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { format } = require('morgan')
 
 const gameSchema = new mongoose.Schema({
     title: {

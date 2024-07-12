@@ -3,17 +3,19 @@ const router = express.Router();
 
 const Profile = require('../models/profile.js')
 const Games = require('../models/games.js')
-const User = require('../models/user.js');
+const User = require('../models/user.js')
+const CompletedGames = require('../models/completedGames.js')
 
 
 router.get('/', async (req, res) => {
     try {
         const userInDatabase = await User.findOne({ _id: req.session.user._id });
-        const myProfile = await Profile.findOne({ _id: userInDatabase.profile });
-        const myGames = await Games.find({ _id: myProfile.games });
+        
         if (!userInDatabase.profile) {
             res.redirect('/profile/new')
         } else {
+            const myProfile = await Profile.findOne({ _id: userInDatabase.profile });
+            const myGames = await Games.find({ _id: myProfile.games });
             res.render('profile/index.ejs', {
                 user: userInDatabase,
                 games: myGames,
@@ -55,29 +57,23 @@ router.post('/new', async(req, res) => {
     }
 })
 
-router.post('/checkbox', async (req, res) => {
+router.put('/checkbox', async (req, res) => {
     try {
-        const userInDatabase = await User.findOne(
-            { _id: req.session.user._id }
-        );
-        const myProfile = await Profile.findOne(
-            { _id: userInDatabase.profile }
-        );
-        console.log(myProfile)
-        const profileGameList = myProfile.games
-        const myGames = await Games.find(
-            { _id: myProfile.games }
-        );
-        console.log(myGames)
-        console.log(profileGameList)
-        console.log(req.body)
+        const userInDatabase = await User.findOne({ _id: req.session.user._id });
+        const myProfile = await Profile.findOne({ _id: userInDatabase.profile });
+        myProfile.games.forEach((game) => {
 
-        if (req.body.gameCompleted) {
-            profileGameList.gameCompleted = true
-        } else {
-            profileGameList.gameCompleted = false
-        }
-    res.redirect('/profile')
+            if (game._id == (req.body.gameCompleted)) {
+                gameIsCompleted = true
+            } else {
+                return
+            }
+        })
+
+        await myProfile.save()
+        console.log(myProfile)
+
+        res.redirect('/profile')
     } catch (err) {
         console.log(err)
         res.redirect('/')

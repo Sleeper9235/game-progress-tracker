@@ -7,7 +7,15 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1><%= user.username %>, welcome to your profile!</h1>
+    <h1><%= user.username %>, welcome to your game armoury!</h1>
+    <div class="gameSearch">
+        <form action="" method="get">
+            <p>Find a game: 
+                <input type="search" /> 
+                <button type="submit">Search</button>
+            </p>
+        </form>
+    </div>
     <div class="game-library">
         <ul>
             <% games.forEach((game) => { %>
@@ -25,7 +33,7 @@
                     <br />
                     <a value="<%= game.gameLink %>"></a>
                     <br />
-                    <form action="/profile/checkbox" method="POST">
+                    <form action="/profile/checkbox?_method=PUT" method="POST">
                         <input type="checkbox" value="<%= game._id %>" name="gameCompleted" >Game Completed</input>
                         <button type="submit">Update</button>
                     </form>                    
