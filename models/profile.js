@@ -17,13 +17,12 @@ const profileSchema = new mongoose.Schema({
     profileCreated: {
         type: Boolean
     },
-    completedGames: [
+    games: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "completedGame"
+            ref: "Game",
         }
-
-    ]
+    ], 
 })
 
 const Profile = mongoose.model('Profile', profileSchema)

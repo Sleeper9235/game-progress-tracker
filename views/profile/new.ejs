@@ -16,11 +16,11 @@
         <label for="email">Email</label>
         <input type="email" name="email" id="email" />
         <div id="games">
-            <h3>Selected Game</h3>
-        <select name="completedGames" id="gameSelect" multiple>
-        <% games.forEach((game) => { %> 
-            <option name="completedGames" value="<%= game.id %>" ><%= game.title %></option>
-        <% }) %>
+          <h3>Selected Game</h3>
+            <select name="games" id="gameSelect" multiple>
+              <% games.forEach((game) => { %> 
+                  <option name="games" value="<%= game.id %>"><%= game.title %></option>
+              <% }) %>
         </select>
         </div>
         <button type="submit">Finish</button>

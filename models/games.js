@@ -23,8 +23,14 @@ const gameSchema = new mongoose.Schema({
     }, 
     gameLink: {
         type: String, 
-    }
-})
+    },
+    completedByUsers: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
+    ],
+});
 
 const Game = mongoose.model('Game', gameSchema)
 
