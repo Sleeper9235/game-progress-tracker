@@ -1,12 +1,14 @@
 <link rel="stylesheet" href="/stylesheet/navbar.css">
-<nav>
-    <% if (user) { %>
-        <a href="/games/armoury">Armoury</a>
-        <a href="/profiles/myProfile">Inventory</a>
-        <a href="/profiles">All Profiles</a>
-        <a href="/auth/sign-out">Sign Out</a>
+<% if (user) { %>
+    <nav id="signed-in">
+        <a class="navbar" href="/games/armoury">Armoury</a>
+        <a class="navbar" href="/profiles/myProfile">Inventory</a>
+        <a class="navbar" href="/profiles">All Profiles</a>
+        <a class="navbar" href="/auth/sign-out">Sign Out</a>
+    </nav>
     <% } else { %>
-        <a href="/auth/sign-up">Sign Up</a>
-        <a href="/auth/sign-in">Sign In</a>
+    <nav id="not-signed-in">
+        <a class="navbar" href="/auth/sign-up">Sign Up</a>
+        <a class="navbar" href="/auth/sign-in">Sign In</a>
     <% } %>
 </nav>

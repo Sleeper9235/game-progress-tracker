@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/mainStyle.css">
     <title>Game List</title>
 </head>
 <body>
     <%- include('../../partials/_navbar') %>
-    <h1>Our List of Games</h1>
+    <h1><span>Game Armoury</span></h1>
     <ul>
         <% games.forEach((game) => { %>
-            <li value="game.id"><%= game.title %></li>
+            <li class="whyAreYouOffALittle" value="game.id"><%= game.title %></li>
         <% }) %>
     </ul>
-    <h3>Add a game to the list</h3>
+    <h3>Add a game to the Armoury</h3>
     <form action="/games" method="POST">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" />

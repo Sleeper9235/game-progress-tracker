@@ -5,11 +5,41 @@ const Profile = require('../models/profile.js')
 const Games = require('../models/games.js')
 const User = require('../models/user.js')
 
+router.get('/new', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
+        const games = await Games.find({})
+        res.render('profiles/new.ejs', {
+            games: games,
+        })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+router.post('/new', async(req, res) => {
+    try {
+        const myProfile = await Profile.create(req.body)
+        await myProfile.save();
+
+        const userInformation = await User.findOneAndUpdate(
+            {_id: req.session.user._id}, 
+            {profile: myProfile._id}, 
+        )
+        
+        res.redirect('/profiles/myProfile')
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+
 router.get('/', async (req, res) => {
     try {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
         const allUsers = await User.find({})
-        console.log(allUsers)
         res.render('profiles/index.ejs', {
             user: userInDatabase,
             allUsers: allUsers,
@@ -60,8 +90,8 @@ router.get('/:profileId', async (req, res) => {
 router.get('/:gameId/edit', async (req, res) => {
     try {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
-        const currentGame = await Games.find({_id: req.params.gameId})
-        console.log(currentGame)
+        const currentGame = await Games.findOne({_id: req.params.gameId})
+        console.log(currentGame.completedByUsers)
         res.render('profiles/edit.ejs', {
             user: userInDatabase,
             game: currentGame,
@@ -73,34 +103,7 @@ router.get('/:gameId/edit', async (req, res) => {
 })
 
 
-router.get('/new', async (req, res) => {
-    try {
-        const games = await Games.find({})
-        res.render('profiles/new.ejs', {
-            games: games,
-        })
-    } catch (err) {
-        console.log(err)
-        res.redirect('/')
-    }
-})
 
-router.post('/new', async(req, res) => {
-    try {
-        const myProfile = await Profile.create(req.body)
-        await myProfile.save();
-
-        const userInformation = await User.findOneAndUpdate(
-            {_id: req.session.user._id}, 
-            {profile: myProfile._id}, 
-        )
-        
-        res.redirect('/profiles/myProfile')
-    } catch (err) {
-        console.log(err)
-        res.redirect('/')
-    }
-})
 
 router.post('/checkbox', async (req, res) => {
     try {
