@@ -75,7 +75,6 @@ router.get('/:profileId', async (req, res) => {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
         const currentProfile = await User.findOne({ _id: req.params.profileId}).populate('profile')
         const currentGames = await Games.find({ _id: currentProfile.profile.games })
-        console.log()
         res.render('profiles/show.ejs', {
             user: userInDatabase,
             profile: currentProfile, 
@@ -91,7 +90,6 @@ router.get('/:gameId/edit', async (req, res) => {
     try {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
         const currentGame = await Games.findOne({_id: req.params.gameId})
-        console.log(currentGame.completedByUsers)
         res.render('profiles/edit.ejs', {
             user: userInDatabase,
             game: currentGame,

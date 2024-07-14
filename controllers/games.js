@@ -63,7 +63,6 @@ router.get('/armoury/:gameId/edit', async (req, res) => {
 
 router.put('/armoury/:gameId', async (req, res) => {
     try {
-        console.log(req.params.gameId)
         const currentGame = await Game.findOneAndUpdate({_id: req.params.gameId})
         currentGame.set(req.body)
         await currentGame.save()
