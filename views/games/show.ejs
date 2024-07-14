@@ -12,7 +12,7 @@
             <% games.forEach((game) => { %>
               <ul>
                 <h1><span><%= game.title %></span></h1>
-                <img src="<%= game.image %>"  width="300px"/>
+                <img src="<%= game.image %>"  alt="<%= game.title %>" title="<%= game.title %>" width="300px"/>
                   <li> 
                     <p>Title: </p><%= game.title %>
                   </li>
