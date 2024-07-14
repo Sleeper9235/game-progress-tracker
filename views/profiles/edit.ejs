@@ -8,11 +8,11 @@
 </head>
 <body>
     <%- include('../../partials/_navbar.ejs') %>
-    <div class="game-library">
-        <ul>
-            <div>
-                <h1>Welcome to your inventory slot for <%= game.title %></h1>
-                <br />
+    <div id="container">
+        <h1><span>Inventory</span> for <span><%= game.title %></span></h1>
+    </div>
+        <div class="game-library">
+            <ul>
                 <img src="<%= game.image %>"  width="300px"/>
                 <br />
                 <%= game.title %>
@@ -23,19 +23,24 @@
                 <br />
                 <%= game.description %>
                 <br />
-                <a href="<%= game.gameLink %>">Link to the game's webpage</a>
-                <br />
                 <% if (game.completedByUsers.includes(user._id)) { %>
                     Game Status: complete
+                    <br />
+                    <a id="game-link" href="<%= game.gameLink %>">Website</a>
                     <form action="/profiles/checkbox?_method=DELETE" method="POST">
                         <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as incomplete</button>
                     </form> 
                 <% } else { %>
+                    
                     Game Status: incomplete
+                    <br />
+                    <a id="game-link" href="<%= game.gameLink %>">Website</a>
                     <form action="/profiles/checkbox" method="POST">
                         <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as complete</button>
                     </form> 
-                <% } %>                                  
+                    
+                <% } %>     
+                            
             </div>
         </ul>
     </div>

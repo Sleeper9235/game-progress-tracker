@@ -8,11 +8,14 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1><%= user.profile.firstName %>, welcome to your game armoury!</h1>
+    <div id="container">
+    <h1><span><%= user.username %>'s</span> Game Armoury!</h1>
         <div class="game-library">
             <% games.forEach((game) => { %>
                 <div class="each-game">
-                    <a href="/profiles/<%= game._id %>/edit">
+                    <a
+                    id="transparent" 
+                    href="/profiles/<%= game._id %>/edit">
                         <img 
                         src="<%= game.image %>"  
                         alt="<%= game.title %>" 
@@ -20,9 +23,13 @@
                         width="100px"
                         />
                     </a>
+                    <a id="game-title"
+                    href="/profiles/<%= game._id %>/edit">
+                        <%= game.title %>
+                    </a>
                 </div>            
             <% }) %>
+        </div>
     </div>
-
 </body>
 </html>

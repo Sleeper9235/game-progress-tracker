@@ -8,9 +8,10 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
+  <div id="form">
   <% game.forEach((game) => { %> 
     <h1>Reforge <span><%= game.title %></span></h1>
-    <%= game._id %>
+    </div>
     <form action="/games/armoury/<%= game._id %>?_method=PUT" method="POST">
         <label for="title">Title:</label>
         <input type="text" name="title" id="title" value="<%= game.title %>"/>
@@ -30,7 +31,7 @@
         <label for="gameLink">Link</label>
         <input type="text" name="gameLink" id="gameLink" value="<%= game.gameLink %>"/>
         <br />
-        <button type="submit">Edit Game</button>
+        <button type="submit">Update Game</button>
     </form>
     <% }) %>
 </body>

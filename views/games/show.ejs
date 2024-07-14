@@ -14,23 +14,23 @@
                 <h1><span><%= game.title %></span></h1>
                 <img src="<%= game.image %>"  width="300px"/>
                   <li> 
-                    Title: <%= game.title %>
+                    <p>Title: </p><%= game.title %>
                   </li>
                   <li> 
-                    <%= game.genre %>
+                    <p>Genre(s): </p><%= game.genre %>
                   </li>
                   <li> 
-                    <%= game.releasedDate %>
+                    <p>Released Date: </p><%= game.releasedDate %>
                   </li>
                   <li> 
-                    <%= game.description %>
+                    <p id="removeInline">Description: </p><%= game.description %>
                   </li>
                   <li>     
-                    <a href="<%= game.gameLink %>">Website</a>                 
+                    <a id="game-link" href="<%= game.gameLink %>">Website</a>                 
                   </li>
                   <p></p>
-                  <a href='/games/armoury/<%= game._id %>/edit' >
-                  <button type="submit">Edit</button>
+                  <a id="transparent" href='/games/armoury/<%= game._id %>/edit'>
+                  <button type="submit">Edit Information</button>
                   </a>
               </ul>
             <% }) %>

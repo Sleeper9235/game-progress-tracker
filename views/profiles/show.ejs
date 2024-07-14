@@ -8,32 +8,38 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1><%= user.profile.firstName %>, welcome to <%=profile.username %>'s page!</h1>
-        <div class="game-library">
-            <ul>
-                <% games.forEach((game) => { %>
-                    <li>
-                        <br />
-                        <img src="<%= game.image %>"  width="300px"/>
-                        <br />
-                        <%= game.title %>
-                        <br />
-                        <%= game.genre %>
-                        <br />
-                        <%= game.releasedDate %>
-                        <br />
-                        <%= game.description %>
-                        <br />
-                        <a value="<%= game.gameLink %>"></a>
-                        <% if (game.completedByUsers.includes(profile._id)) { %>
-                            Game Status: complete
-                        <% } else { %>
-                            Game Status: incomplete
-                        <% } %>                   
-                    </li>
-                <% }) %>
-            </ul>
-        </div>
-
+    <div id="form">
+        <h1>
+            <span><%= user.profile.firstName %>,</span> 
+            welcome to 
+            <span><%=profile.username %>'s</span> 
+            page!
+        </h1>
+    </div>
+    <div class="game-library">
+        <ul>
+            <% games.forEach((game) => { %>
+                <li>
+                    <img src="<%= game.image %>"  width="300px"/>
+                    <br />
+                    <p>Title: </p><%= game.title %>
+                    <br />
+                    <p>Genre(s): </p><%= game.genre %>
+                    <br />
+                    <p>Released Date: </p><%= game.releasedDate %>
+                    <br />
+                    <p id="removeInline">Description: </p><%= game.description %>
+                    <br />
+                    <a id="game-link" href="<%= game.gameLink %>">Website</a>
+                    <% if (game.completedByUsers.includes(profile._id)) { %>
+                        Game Status: complete
+                    <% } else { %>
+                        Game Status: incomplete
+                    <% } %>                   
+                </li>
+                <br />
+            <% }) %>
+        </ul>
+    </div>
 </body>
 </html>

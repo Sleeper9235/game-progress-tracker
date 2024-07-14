@@ -9,7 +9,7 @@ body {
     text-align: center;
     font-family: "Poppins", sans-serif;
     color: white;
-    background: linear-gradient(to top, #393939, #6E6E6E 95%);
+    background: linear-gradient(to top, #ff5a09 1%,  #393939 35%, #6E6E6E 95%);
     background-attachment: fixed;
     
 }
@@ -61,4 +61,15 @@ input {
 span {
     font-family: "Playwrite AR", cursive;
     color: #f3843e;    
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 45%;
+    top: 25%;
+    border: #f3843e solid 5px;
+    border-radius: 15%;
+    width: 15%;
 }

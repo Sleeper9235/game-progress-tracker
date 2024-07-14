@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
         const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
         const allUsers = await User.find({})
         res.render('profiles/index.ejs', {
-            user: userInDatabase,
+            mainUser: userInDatabase,
             allUsers: allUsers,
             }
         )

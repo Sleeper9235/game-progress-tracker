@@ -8,15 +8,19 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1><%= user.profile.firstName %>, welcome to the community page!</h1>
-    <ul>
+  <div id="form">
+    <h1><span><%= mainUser.username %>,</span> welcome to the <span>Community Page!</span></h1>
+    <div id="community-page-container">
+    <div id="community-page-profiles">
     <% allUsers.forEach((user) => { %>
-      <li>
-        <h2><%= user.username %></h2>
-          <a href="/profiles/<%= user._id %>">Profile</a>
-      </li>
+      <% if (mainUser.username !== (user.username)) { %> 
+      <div>
+        <h2><%= user.username %>: <a id="game-link" href="/profiles/<%= user._id %>">Profile</a><h2>
+      </div>
+      <% } %>
     <% }) %>
-    </ul>
-
+  </div>
+  </div>
+  </div>
 </body>
 </html>

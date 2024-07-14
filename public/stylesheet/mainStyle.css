@@ -8,9 +8,13 @@ body {
     text-align: center;
     font-family: "Poppins", sans-serif;
     color: white;
-    background: linear-gradient(to top, #393939, #6E6E6E 95%);
+    background: linear-gradient(to top, #393939 35%, #6E6E6E 95%);
     background-attachment: fixed;
     
+}
+
+h3 {
+    margin-top: 3%;
 }
 
 button {
@@ -43,16 +47,13 @@ button:hover {
 p {
     color: darkgray;
     text-align: center;
+    display: inline;
 }
 
 form {
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-
-#description {
-    width: 100%;    
 }
 
 input {
@@ -64,12 +65,54 @@ span {
     color: #f3843e;    
 }
 
+
+li {
+    list-style-type: none;
+}
+
+img {
+    display: inline-block;
+    margin: 0px 5px;
+    width: 150px;
+}
+
+
+a {
+    background: linear-gradient(to top, #ff5a09, #f3843e 75%);    
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    padding: 1rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s;
+    white-space: nowrap;
+    border: 0;
+}
+
 .whyAreYouOffALittle {
     transform: translate(-1%);
 }
 
-li {
-    list-style-type: none;
+.game-library {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 2%;
+    padding: 4px;
+    width: 30%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#description {
+    width: 100%;    
 }
 
 #gameScrollBox {
@@ -84,20 +127,62 @@ li {
     overflow-y: hidden;
 }
 
-img {
-    display: inline-block;
-    margin: 0px 5px;
-    width: 150px;
+#container {
+    margin-top: 3%;
+    text-align: center;
+    margin-bottom: -2%;
 }
 
-.game-library {
+#transparent {
+    background: transparent;
+}
+
+#game-title {
     display: flex;
-    flex-direction: row;
-    text-align: center;
     justify-content: center;
     margin: auto;
-    padding: 4px;
-    width: 30%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    width: fit-content;
+    padding: 0px 5px;
 }
+
+#game-title:hover {
+    box-shadow: #FF9900 0 0 7px;
+}
+
+#game-link {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: fit-content;
+    padding: 0px 5px;
+}
+
+#game-link:hover {
+    box-shadow: #FF9900 0 0 7px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5%;
+    padding: 0px 10px;
+}
+
+#removeInline {
+    display: contents;
+}
+
+#community-page-container {
+    display: flex;
+    justify-content: center;
+}
+
+#community-page-profiles {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
