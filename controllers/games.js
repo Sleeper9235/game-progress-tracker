@@ -39,12 +39,35 @@ router.get('/armoury', async (req, res) => {
 
 router.get('/armoury/:gameId', async (req, res) => {
     try {
-        console.log(req.params.gameId)
         const currentGame = await Game.find({_id: req.params.gameId})
-        console.log(currentGame)
         res.render('games/show.ejs', {
             games: currentGame,
         })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+router.get('/armoury/:gameId/edit', async (req, res) => {
+    try {
+        const currentGame = await Game.find({_id: req.params.gameId})
+        res.render('games/edit.ejs', {
+            game: currentGame,
+        })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+router.put('/armoury/:gameId', async (req, res) => {
+    try {
+        console.log(req.params.gameId)
+        const currentGame = await Game.findOneAndUpdate({_id: req.params.gameId})
+        currentGame.set(req.body)
+        await currentGame.save()
+        res.redirect(`/games/armoury/${req.params.gameId}`)
     } catch (err) {
         console.log(err)
         res.redirect('/')

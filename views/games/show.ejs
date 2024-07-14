@@ -8,13 +8,13 @@
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
-    <h1></h1>
         <div class="game-library">
             <% games.forEach((game) => { %>
               <ul>
+                <h1><span><%= game.title %></span></h1>
                 <img src="<%= game.image %>"  width="300px"/>
                   <li> 
-                    <%= game.title %>
+                    Title: <%= game.title %>
                   </li>
                   <li> 
                     <%= game.genre %>
@@ -28,9 +28,12 @@
                   <li>     
                     <a href="<%= game.gameLink %>">Website</a>                 
                   </li>
+                  <p></p>
+                  <a href='/games/armoury/<%= game._id %>/edit' >
+                  <button type="submit">Edit</button>
+                  </a>
               </ul>
             <% }) %>
         </div>
-
 </body>
 </html>
