@@ -61,10 +61,12 @@ router.get('/armoury/:gameId/edit', async (req, res) => {
     }
 })
 
-router.put('/armoury/:gameId', async (req, res) => {
+router.put('/armoury/:gameId/edit', async (req, res) => {
     try {
-        const currentGame = await Game.findOneAndUpdate({_id: req.params.gameId})
-        currentGame.set(req.body)
+        const currentGame = await Game.findOneAndUpdate({_id: req.params.gameId}, {
+            $set: (req.body)
+        }
+        )
         await currentGame.save()
         res.redirect(`/games/armoury/${req.params.gameId}`)
     } catch (err) {

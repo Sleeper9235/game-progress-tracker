@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheet/mainStyle.css">
-  <title><%=profile.username %>'s< Page</title>
+  <title><%=profile.username %>'s Page</title>
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
@@ -30,12 +30,14 @@
                     <br />
                     <p id="removeInline">Description: </p><%= game.description %>
                     <br />
-                    <a id="game-link" href="<%= game.gameLink %>">Website</a>
+                    
                     <% if (game.completedByUsers.includes(profile._id)) { %>
                         Game Status: complete
                     <% } else { %>
                         Game Status: incomplete
-                    <% } %>                   
+                    <% } %>      
+                    <br /> 
+                    <a id="game-link" href="<%= game.gameLink %>">Website</a>            
                 </li>
                 <br />
             <% }) %>
