@@ -12,7 +12,7 @@ link to planning materials: https://trello.com/b/AaLCzDY8/men-stack-crud-app-pro
 
 ## Attributions
 
-n/a
+![html banner](https://www.freepik.com/premium-vector/black-white-image-placeholder-classic-style-pictogram_202069811.htm#fromView=search&page=1&position=18&uuid=41c65b34-1117-414e-a841-36191420c026)
 
 ## Technologies Used
 
