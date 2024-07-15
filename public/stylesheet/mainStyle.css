@@ -148,8 +148,6 @@ h2 {
 }
 
 #game-link {
-    display: flex;
-    justify-content: center;
     margin: auto;
     margin-right: 5px;
     margin-top: 5px;
