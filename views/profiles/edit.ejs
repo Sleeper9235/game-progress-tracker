@@ -9,7 +9,7 @@
 <body>
     <%- include('../../partials/_navbar.ejs') %>
     <div id="container">
-        <h1><span>Inventory:</span><span><%= game.title %></span></h1>
+        <h1><span>Inventory: </span><span><%= game.title %></span></h1>
     </div>
         <div class="game-library">
             <ul>
@@ -40,7 +40,7 @@
                     </form>  
                 <% } %>   
                 <form action="/profiles/<%= game._id %>?_method=DELETE" method="POST">
-                    <button value="<%= game._id %>" type="submit">Remove game from Armoury</button>
+                    <button value="<%= game._id %>" type="submit">Remove game from Inventory</button>
                   </form>  
             </div>
         </ul>
