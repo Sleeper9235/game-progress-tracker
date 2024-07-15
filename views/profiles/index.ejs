@@ -15,7 +15,7 @@
     <% allUsers.forEach((user) => { %>
       <% if (mainUser.username !== (user.username)) { %> 
       <div>
-        <h2><%= user.username %>: <a id="game-link" href="/profiles/<%= user._id %>">Profile</a><h2>
+        <a id="game-link" href="/profiles/<%= user._id %>"><%=user.username %>'s Profile</a>
       </div>
       <% } %>
     <% }) %>
