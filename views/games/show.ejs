@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheet/mainStyle.css">
-  <title>Profile Page</title>
+  <title><%= games[0].title %></title>
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
@@ -28,10 +28,12 @@
                   <li>     
                     <a id="game-link" href="<%= game.gameLink %>">Website</a>                 
                   </li>
-                  <p></p>
                   <a id="transparent" href='/games/armoury/<%= game._id %>/edit'>
                   <button type="submit">Edit Information</button>
                   </a>
+                  <form action="/profiles/<%= game._id %>?_method=PUT" method="POST">
+                    <button type="submit">Add game to Armoury</button>
+                  </form>
               </ul>
             <% }) %>
         </div>

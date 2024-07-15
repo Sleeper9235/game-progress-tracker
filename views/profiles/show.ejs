@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheet/mainStyle.css">
-  <title>Profile Page</title>
+  <title><%=profile.username %>'s< Page</title>
 </head>
 <body>
   <%- include('../../partials/_navbar.ejs') %>
     <div id="form">
         <h1>
-            <span><%= user.profile.firstName %>,</span> 
+            <span><%= user.username %>,</span> 
             welcome to 
             <span><%=profile.username %>'s</span> 
             page!

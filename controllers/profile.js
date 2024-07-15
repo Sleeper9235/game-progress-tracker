@@ -3,7 +3,8 @@ const router = express.Router();
 
 const Profile = require('../models/profile.js')
 const Games = require('../models/games.js')
-const User = require('../models/user.js')
+const User = require('../models/user.js');
+const Game = require('../models/games.js');
 
 router.get('/new', async (req, res) => {
     try {
@@ -100,6 +101,40 @@ router.get('/:gameId/edit', async (req, res) => {
     }
 })
 
+
+router.put('/:gameId', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
+        console.log(userInDatabase)
+        const currentGame = await Game.findOne({_id: req.params.gameId})
+        console.log(currentGame)
+        const myProfile = await Profile.findByIdAndUpdate(userInDatabase.profile._id, { 
+            $push: { games: currentGame },
+        });
+        res.redirect(`/profiles/myProfile`)
+        console.log(myProfile)
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+router.delete('/:gameId', async (req, res) => {
+    try {
+        const userInDatabase = await User.findOne({ _id: req.session.user._id }).populate('profile')
+        console.log(userInDatabase)
+        const currentGame = await Game.findOne({_id: req.params.gameId})
+        console.log(currentGame)
+        const myProfile = await Profile.findByIdAndUpdate(userInDatabase.profile._id, { 
+            $pull: { games: currentGame._id },
+        });
+        console.log(myProfile)
+        res.redirect(`/profiles/myProfile`)
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
 
 
 

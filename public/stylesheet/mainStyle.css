@@ -115,10 +115,7 @@ a {
 #gameScrollBox {
     display: flex;
     flex-direction: row;
-    text-align: center;
-    justify-content: center;
     margin: auto;
-    padding: 4px;
     width: 30%;
     overflow-x: auto;
     overflow-y: hidden;

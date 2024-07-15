@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheet/mainStyle.css">
-  <title>Profile Page</title>
+  <title>Inventory <%= game.title %></title>
 </head>
 <body>
     <%- include('../../partials/_navbar.ejs') %>
@@ -37,10 +37,11 @@
                     <a id="game-link" href="<%= game.gameLink %>">Website</a>
                     <form action="/profiles/checkbox" method="POST">
                         <button type="submit" value="<%= game._id %>" name="gameCompleted" >Mark game as complete</button>
-                    </form> 
-                    
-                <% } %>     
-                            
+                    </form>  
+                <% } %>   
+                <form action="/profiles/<%= game._id %>?_method=DELETE" method="POST">
+                    <button value="<%= game._id %>" type="submit">Remove game from Armoury</button>
+                  </form>  
             </div>
         </ul>
     </div>
