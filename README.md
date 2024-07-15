@@ -19,7 +19,8 @@ link to planning materials: https://trello.com/b/AaLCzDY8/men-stack-crud-app-pro
 * EJS
 * JavaScript
 * CSS
-* Paint (for the image)
+* Node.js
+* Mongo DB
 
 ## Next Steps
 
